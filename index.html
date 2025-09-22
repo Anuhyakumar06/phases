@@ -16,6 +16,7 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      position: relative;
     }
     .step {
       width: 150px;
@@ -30,7 +31,24 @@
       font-size: 1.2rem;
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       margin: auto;
+      position: relative;
     }
+    /* Arrow using ::after */
+    .step::after {
+      content: '';
+      width: 2px;
+      height: 30px;
+      background: #333;
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    /* Remove arrow from the last step */
+    .step:last-child::after {
+      display: none;
+    }
+
     .plan { background: #ff3b3b; }
     .develop { background: #5c755e; }
     .build { background: #007bff; }
@@ -39,6 +57,22 @@
     .deploy { background: #ffb600; }
     .operate { background: #fff2b2; color: #333; }
     .monitor { background: #d9d9d9; color: #333; }
+
+    /* Arrowhead */
+    .step::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-left: 2px solid #333;
+      border-bottom: 2px solid #333;
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-45deg);
+    }
+    .step:last-child::before {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -54,3 +88,4 @@
   </div>
 </body>
 </html>
+
